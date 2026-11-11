@@ -1,0 +1,167 @@
+<!DOCTYPE html><html lang=ru><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>OFR — Инженерный корпус</title><link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel=stylesheet><style>
+:root{--b:#0d0d0f;--p:#151517;--l:#2a2a2e;--t:#e9e9ec;--m:#8e8e96;--r:#a3121f;--R:#d1303d;--d:#5a0a12}
+*{box-sizing:border-box;-webkit-user-select:none;user-select:none;-webkit-user-drag:none;-webkit-tap-highlight-color:transparent}
+input,textarea{-webkit-user-select:text;user-select:text}
+body{margin:0;background:var(--b);color:var(--t);font:16px/1.7 Comfortaa,system-ui,sans-serif}
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+header,main,footer{position:relative;z-index:1}
+header{display:flex;align-items:center;gap:20px;padding:14px 5vw;border-bottom:1px solid var(--l);flex-wrap:wrap;position:sticky;top:0;background:#0d0d0ffa;z-index:10}
+.lg{font-weight:700;display:flex;align-items:center;gap:10px;margin-right:auto}
+.lg i{position:relative;top:-4px;cursor:pointer;transition:transform .25s,filter .25s;width:38px;height:38px;background:url(data:image/png;base64,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) center/contain no-repeat;filter:drop-shadow(0 0 6px #d1303d99)}
+.lg i:hover{transform:scale(1.18);filter:drop-shadow(0 0 10px #ff4d5a)}
+.ex{display:flex;gap:8px}.ex a{color:var(--t);text-decoration:none;font-size:13px;padding:6px 14px;border:1px solid var(--l);border-radius:99px;transition:.2s}.ex a:hover{border-color:var(--r);background:#a3121f1f;transform:translateY(-2px)}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--m);padding:6px 14px;border-radius:99px;cursor:pointer;font-size:14px;transition:.2s}
+nav a:hover{color:var(--t)}
+nav a.on{color:var(--t);background:var(--p);box-shadow:inset 0 -2px var(--r)}
+.k{width:11px;height:11px;margin-left:3px;fill:currentColor}
+.b{background:var(--r);color:#fff;border:0;padding:10px 22px;border-radius:99px;font:600 14px Comfortaa,sans-serif;cursor:pointer;display:inline-block;transition:.2s}
+.b:hover{transform:translateY(-2px);background:var(--R);box-shadow:0 8px 22px #a3121f73}
+.b.o{background:0;border:1px solid var(--l);color:var(--t)}
+.b.o:hover{border-color:var(--r);background:#a3121f1f}
+main{max-width:1050px;margin:auto;padding:0 5vw 70px}
+[hidden]{display:none!important}html{scroll-behavior:smooth;scroll-padding-top:84px}.p{padding-top:20px}
+.h{padding:100px 0 70px;text-align:center;position:relative}
+.h:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,#a3121f59,transparent 62%);animation:pl 4s infinite;pointer-events:none}
+.h>*{position:relative;z-index:1}
+.h small{color:var(--R);letter-spacing:.25em;text-transform:uppercase;font-size:12px}
+.h h1{font-size:clamp(34px,7vw,62px);margin:14px 0;line-height:1.1}
+.h p{color:var(--m);max-width:540px;margin:0 auto 28px}
+h2{font-size:clamp(24px,4vw,34px);margin:50px 0 8px}
+.ttl{display:inline-block;border-bottom:1px solid var(--l);padding-bottom:6px;margin-bottom:22px}
+.s{color:var(--m);margin:0 0 24px}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.c{position:relative;overflow:hidden;background:var(--p);border:1px solid var(--l);border-radius:14px;padding:22px;transition:.3s}
+.c:before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--R),transparent);transform:scaleX(0);transition:transform .45s}
+.c:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--x,50%) var(--y,0),#a3121f4d,transparent 70%);opacity:0;transition:opacity .4s;pointer-events:none}
+.c:hover{transform:perspective(800px) translateY(-7px) scale(1.03) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));border-color:var(--r);background:#1a1517;box-shadow:0 14px 34px #a3121f59}
+.c:hover:before{transform:scaleX(1)}.c:hover:after{opacity:1}
+.n{color:var(--m);font-size:13px;letter-spacing:.12em;font-weight:700;transition:.3s}
+.c:hover .n{color:var(--R)}
+.c h3{margin:6px 0;font-size:18px}
+.c p{margin:0 0 8px;color:var(--m);font-size:14px}
+.c p b{color:var(--t)}
+.im{height:90px;border-radius:10px;margin-bottom:14px;background:repeating-linear-gradient(45deg,#1c1c1f 0 10px,#17171a 10px 20px);border:1px solid var(--l);display:grid;place-items:center;color:#55555c;font-size:12px}
+.cta{margin-top:50px;text-align:center;padding:44px 20px;border:1px solid var(--l);border-radius:14px;background:linear-gradient(180deg,#1a1214,var(--b))}
+.ld{font-size:17px;max-width:720px;margin:0 0 30px}
+.w{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:12px 0 34px}
+.w h3{font-size:16px!important;font-weight:600}
+.st{display:flex;gap:22px;align-items:center}
+.st .bg{font-size:64px;font-weight:700;color:var(--R);line-height:1;min-width:70px;text-align:center}
+.tag{font-size:12px;padding:2px 12px;border-radius:99px;border:1px solid var(--r);color:var(--R)}
+.av{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#3a3a40,var(--r));margin-bottom:12px;display:grid;place-items:center;font-weight:700;font-size:20px}
+.nb{border-left:4px solid var(--m);background:var(--p);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:8px}
+#rules .c{margin-bottom:14px}#rules .c:hover,.gt.c:hover{transform:none}#rules .c p{font-size:15px}
+.gt{max-width:520px;margin:20px auto;text-align:center}
+.gt svg{width:44px;height:44px;fill:var(--R);animation:sh 3s infinite}
+.gt input,.gt textarea{width:100%;margin:6px 0;padding:11px 14px;background:var(--b);color:var(--t);border:1px solid var(--l);border-radius:12px;font:inherit}
+.gt input:focus,.gt textarea:focus{outline:0;border-color:var(--r);box-shadow:0 0 0 3px #a3121f59}
+.gt textarea{min-height:90px;resize:vertical}
+.gt pre{text-align:left;white-space:pre-wrap;background:var(--b);border:1px solid var(--l);border-radius:12px;padding:12px;font:13px/1.5 Comfortaa,sans-serif;color:var(--m)}
+.nt{font-size:12px;color:var(--m);margin-top:16px}
+footer{border-top:1px solid var(--l);padding:26px 5vw;color:var(--m);font-size:13px;text-align:center}
+.rv{opacity:0;translate:0 44px;transition:opacity .8s var(--d,0s),translate .8s cubic-bezier(.2,.8,.2,1) var(--d,0s)}
+.c.rv,.b.rv{transition:transform .3s,border-color .3s,background .3s,box-shadow .3s,opacity .8s var(--d,0s),translate .8s cubic-bezier(.2,.8,.2,1) var(--d,0s)}
+.rv.in{opacity:1;translate:0 0}
+@keyframes u{from{opacity:0;transform:translateY(18px)}}
+@keyframes pl{0%,100%{opacity:.5}50%{opacity:1}}
+@keyframes sh{0%,88%,100%{transform:none}90%{transform:rotate(-8deg)}94%{transform:rotate(8deg)}97%{transform:rotate(-4deg)}}
+#sn{position:fixed;right:16px;bottom:16px;z-index:20;width:42px;height:42px;border-radius:50%;border:1px solid var(--l);background:var(--p);color:var(--t);cursor:pointer;font-size:18px;transition:.2s}
+#sn:hover{transform:scale(1.15);border-color:var(--r);box-shadow:0 0 16px #a3121f8c}
+#ck{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:99}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+</style><canvas id=fx></canvas><canvas id=ck></canvas><header><div class=lg><i></i>OFR · Инженерный корпус</div><nav><a class=on data-p=home>Главная</a><a data-p=info>Информация</a><a data-p=farms>Фермы<svg class=k viewBox="0 0 24 24"><path d="M12 1a5 5 0 0 0-5 5v3H5v14h14V9h-2V6a5 5 0 0 0-5-5zm-3 8V6a3 3 0 0 1 6 0v3z"/></svg></a><a data-p=team>Состав</a><a data-p=rules>Правила</a></nav><div class=ex><a href="https://discord.gg/hZ3uYpgQv" target=_blank rel=noopener>Discord</a><a href="https://diter5.github.io/Orden-Flaming-Rose/" target=_blank rel=noopener>Сайт ОФР</a></div><a class=b id=login>Войти</a></header><main>
+<section class=p id=home><div class=h><small>Orden Flaming Rose</small><h1>Инженерный корпус</h1><p>Ресурсы, автоматизация и инфраструктура, на которых держится весь Орден.</p><a class=b data-go=info>Об отделе</a> <a class="b o" data-go=farms>Фермы</a></div>
+<h2>Почему Инженерный корпус</h2><p class=s>Основа сильной команды — знания, порядок и общие цели.</p><div class=g>
+<div class=c><b class=n>01</b><h3>Автоматизация</h3><p>Фермы и механизмы для всего Ордена.</p></div>
+<div class=c><b class=n>02</b><h3>Инфраструктура</h3><p>Дороги, транспорт и склады.</p></div>
+<div class=c><b class=n>03</b><h3>Отчётность</h3><p>Каждую неделю заслуги уходят выше.</p></div>
+<div class=c><b class=n>04</b><h3>Реальный вклад</h3><p>Награда по решению Магистра.</p></div></div>
+<h2>Три шага до вступления</h2><p class=s>Простой путь в корпус.</p><div class=g>
+<div class=c><b class=n>01</b><h3>Оставь заявку</h3><p>Войди через Discord и заполни анкету.</p></div>
+<div class=c><b class=n>02</b><h3>Пройди отбор</h3><p>Мы рассмотрим заявку и пригласим на беседу.</p></div>
+<div class=c><b class=n>03</b><h3>Стань инженером</h3><p>Получи роль и доступ к разделу «Фермы».</p></div></div>
+<div class=cta><h2 style=margin-top:0>Следующий механизм может быть твоим</h2><a class=b data-go=gate>Оставить заявку</a></div></section>
+<section class=p id=info><h2 class=ttl>Информация об отделе</h2><p class=ld>Инженеры обеспечивают клан ресурсами, занимаются автоматизацией и инфраструктурой.</p><p class=ld style=margin-bottom:8px><b>Какими видами работ они занимаются:</b></p><div class=w>
+<div class=c><b class=n>01</b><h3>Стройка ферм и механизмов</h3></div>
+<div class=c><b class=n>02</b><h3>Починка и модернизация ферм</h3></div>
+<div class=c><b class=n>03</b><h3>Прокладка дорог</h3></div>
+<div class=c><b class=n>04</b><h3>Строительство уже спроектированных зданий</h3></div></div>
+<div class=g style=grid-template-columns:repeat(auto-fit,minmax(300px,1fr))><div class="c st"><div class=bg>3</div><div><h3>Отчёта</h3><p>У инженеров будет 3 отчёта.</p></div></div>
+<div class=c><b class=n>ЗАСЛУГИ</b><h3>Каждую неделю</h3><p>Заслуги отсылаются выше. По решению Магистра выдаётся награда или наказание.</p></div></div></section>
+<section class=p id=farms><h2 class=ttl>Фермы</h2><p class=s>Список действующих и планируемых ферм.</p><div class=g id=fl>
+<div class=c><div class=im>скриншот</div><h3>Золотая ферма</h3><p>X / Y / Z</p><span class=tag>работает</span></div>
+<div class=c><div class=im>скриншот</div><h3>Железная ферма</h3><p>X / Y / Z</p><span class=tag>работает</span></div>
+<div class=c><div class=im>скриншот</div><h3>Ферма опыта</h3><p>X / Y / Z</p><span class=tag>в разработке</span></div>
+<div class=c><div class=im>скриншот</div><h3>Ферма еды</h3><p>X / Y / Z</p><span class=tag>работает</span></div></div>
+<div class="gt c" id=gt><svg viewBox="0 0 24 24"><path d="M12 1a5 5 0 0 0-5 5v3H5v14h14V9h-2V6a5 5 0 0 0-5-5zm-3 8V6a3 3 0 0 1 6 0v3z"/></svg><h2 style="margin:10px 0">Доступ закрыт</h2><p class=s>Раздел «Фермы» только для участников сервера с ролью «Инженер». Войди через Discord, а если роли нет, оставь заявку.</p>
+<div id=g1><button class=b id=dc>Войти через Discord</button></div>
+<div id=g2 hidden><p id=hi style=color:var(--R)></p><input id=fg placeholder="Ник в Minecraft"><textarea id=fm placeholder="Хотел бы получить доступ к фермам.">Хотел бы получить доступ к фермам.</textarea><button class=b id=send>Отправить заявку</button></div>
+<div id=g3 hidden><h3>Заявка отправлена</h3><p class=s>Статус: на рассмотрении. Когда её одобрят, тебе придёт сообщение в Discord. После этого нажми кнопку ниже.</p><button class=b id=ok>Проверить роль снова</button></div>
+<p class=nt>Доступ открывается по роли «Инженер» на Discord-сервере.</p></div></section>
+<section class=p id=team><h2 class=ttl>Состав</h2><p class=s>Люди, которые держат корпус.</p><div class=g id=tm></div></section>
+<section class=p id=rules><h2 class=ttl>Регламент Инженерного Отдела</h2>
+<div class=nb><b>Важно:</b> В нашем отделе действуют все общие правила, прописанные в Discord-канале «OFR». Ниже приведены дополнительные инструкции, обязательные для исполнения всеми инженерами.</div>
+<div class=c><h3>1. Эксплуатация ферм</h3><p>Перед началом работы с любой фермой убедитесь, что вы полностью понимаете принцип её устройства.</p><p><b>Правило:</b> Если вы не знакомы с механизмом, вы обязаны проконсультироваться с Главой инженеров или его Заместителем.</p><p><i>Исключение:</i> Если вы на 100% уверены в своих знаниях и умеете пользоваться данной фермой, предварительный опрос не требуется.</p></div>
+<div class=c><h3>2. Управление ресурсами</h3><p>Склад инженерного отдела — это наш общий склад для реализации важных проектов.</p><p><b>Запрещено:</b> Брать любые ресурсы с инженерного склада без предварительного согласования.</p><p><b>Порядок действий:</b> Для получения материалов необходимо запросить разрешение у Главы отдела или его Заместителя.</p></div>
+<div class=c><h3>3. Строительство новых ферм</h3><p>Мы приветствуем инициативу, но каждая постройка должна быть целесообразной и безопасной.</p><p><b>Правило:</b> Перед началом строительства любой фермы вы должны получить одобрение от Главы инженеров.</p><p><i>Обоснование:</i> Некоторые виды ферм могут быть недопустимы или запрещены правилами сервера «Sakeva» (например, из-за нагрузки на сервер или баланса).</p></div></section>
+</main><button id=sn title="Звук"></button><footer>© 2026 Orden Flaming Rose · Инженерный корпус<br>Неофициальный продукт Minecraft. Не связан с Mojang или Microsoft.</footer>
+<script>
+const CID='1568556281499877536',API='https://ofr-apply.diteryxlayer.workers.dev',GID='941048814805073981',RID='1221224270949253210',$=i=>document.getElementById(i),q=x=>document.querySelectorAll(x),
+R=['Лидер отдела','Зам. лидера','Инженер'],
+M=[['Ваймик','MrV1me','mr.v1me',0],['Дитер','diteryx','diteryxlayer',1],['Ларантик','Larant_s','prepityyevreysssr',1],['Пахан','PanPahan','pan_pahan',1],['Впипка','Vpipki','b55mp',2],['Глеб','glebaZZter','glzzter',2],['Ибрахим','Andrey541264','ibrahim2046',2],['Капибара','Capybara_832','capybara_832',2],['Курсед','lyournightmare','cursedfol',2],['Кучики','FOKALLAL','foka_hf',2],['Медный','Mednui','begula_ceo',2],['Немой','Nemoi22','pasha077402',2],['Рыцарь','FrostFury','dmitriev_victor',2],['Три','Mr_Axselot','axselot__79805',2],['ФлеймБоби','Flameboby','fambb04',2],['Тарок679','Тапок','tapos5782',2]];
+let s={};try{s=JSON.parse(localStorage.ofr||'{}')}catch(e){}
+const sv=()=>{try{localStorage.ofr=JSON.stringify(s)}catch(e){}},
+gs=()=>{const n=s.u?s.step||2:1;$('fl').hidden=!s.a;$('gt').hidden=!!s.a;[1,2,3].map(i=>$('g'+i).hidden=n!=i);$('hi').textContent=s.u?'Вошёл как '+s.u+(s.a?'':' · нет роли «Инженер»'):'';$('login').textContent=s.u?'Выйти ('+s.u+')':'Войти';q('.k').forEach(l=>l.style.display=s.a?'none':'')},
+go=p=>{if(p=='gate')p='farms';gs();$(p).scrollIntoView()},
+lg=()=>{if(s.u){s={};sv();try{sessionStorage.clear()}catch(e){}go('home')}else au()},
+au=()=>{if(CID[0]=='Y')return alert('Укажи Client ID Discord-приложения в коде (CID)');
+location='https://discord.com/oauth2/authorize?client_id='+CID+'&redirect_uri='+encodeURIComponent(location.origin+location.pathname)+'&response_type=token&scope=identify%20guilds.members.read'};
+$('tm').innerHTML=M.map(m=>`<div class=c><div class=av>${m[0][0]}</div><h3>${m[0]} | ${m[1]}</h3><p>${m[2]}</p><span class=tag>${R[m[3]]}</span></div>`).join('');
+q('nav a[data-p]').forEach(a=>a.onclick=()=>go(a.dataset.p));
+q('[data-go]').forEach(a=>a.onclick=()=>go(a.dataset.go));
+$('dc').onclick=$('login').onclick=lg;
+$('send').onclick=async()=>{const g=$('fg').value.trim(),m=$('fm').value.trim(),b=$('send');if(!g)return $('fg').focus();
+let k='';try{k=sessionStorage.tk||''}catch(e){}
+if(!k)return alert('Сессия Discord истекла. Нажми «Выйти» и войди заново.');
+if(API[8]=='Y')return alert('Укажи адрес Worker в коде (API)');
+b.disabled=1;b.textContent='Отправляю...';
+try{const r=await fetch(API+'/apply',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:k,mc:g,about:m||'Хотел бы получить доступ к фермам.'})}),d=await r.json();
+if(!r.ok)throw d.error;s.step=3;sv();gs()}catch(e){alert(typeof e=='string'?e:'Не удалось отправить заявку')}
+b.disabled=0;b.textContent='Отправить заявку'};
+$('ok').onclick=au;
+const t=new URLSearchParams(location.hash.slice(1)).get('access_token');
+if(t){history.replaceState(0,'',location.pathname);try{sessionStorage.tk=t}catch(e){}
+const H={headers:{Authorization:'Bearer '+t}},A='https://discord.com/api/users/@me';
+fetch(A,H).then(r=>r.json()).then(u=>{if(!u.username)throw 0;s.u=u.username;s.step=s.step==3?3:2;
+return fetch(A+'/guilds/'+GID+'/member',H).then(r=>r.ok?r.json():{roles:[]})}).then(m=>{s.a=(m.roles||[]).includes(RID)?1:0;sv();go(s.a?'farms':'gate')}).catch(()=>alert('Не удалось войти через Discord'))}
+gs();
+const sp=()=>{let c='home';q('nav a[data-p]').forEach(a=>{if($(a.dataset.p).getBoundingClientRect().top<=innerHeight*.35)c=a.dataset.p});
+if(innerHeight+scrollY>=document.body.scrollHeight-4)c='rules';
+q('nav a[data-p]').forEach(a=>a.classList.toggle('on',a.dataset.p==c))};
+let tk=0;addEventListener('scroll',()=>{if(!tk){tk=1;requestAnimationFrame(()=>{sp();tk=0})}},{passive:true});sp();
+const rv=q('.c,h2,.s,.ld,.nb,.cta,.h>*');
+rv.forEach(e=>{e.classList.add('rv');e.style.setProperty('--d',Math.min([...e.parentNode.children].indexOf(e)*.09,.45)+'s')});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -10% 0px'});
+rv.forEach(e=>io.observe(e));
+addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest('.c');if(!c||c.closest('.gt,#rules'))return;
+const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height,S=(k,v)=>c.style.setProperty(k,v);
+S('--x',x*100+'%');S('--y',y*100+'%');S('--rx',(.5-y)*8+'deg');S('--ry',(x-.5)*8+'deg')});
+let mu=0,ac;try{mu=+localStorage.ofrm}catch(e){}
+const sn=$('sn'),sl=()=>sn.textContent=mu?'🔇':'🔊';sl();
+sn.onclick=()=>{mu=mu?0:1;try{localStorage.ofrm=mu}catch(e){}sl()};
+const ck=$('ck'),cx=ck.getContext('2d');let rg=[];
+const rk=()=>{ck.width=innerWidth;ck.height=innerHeight};rk();addEventListener('resize',rk);
+const an=()=>{cx.clearRect(0,0,ck.width,ck.height);rg=rg.filter(o=>(o.r+=1.8)<45);
+rg.forEach(o=>{cx.globalAlpha=1-o.r/45;cx.beginPath();cx.arc(o.x,o.y,o.r,0,7);cx.lineWidth=2;cx.strokeStyle='rgba(255,0,0,.9)';cx.stroke()});
+if(rg.length)requestAnimationFrame(an)};
+addEventListener('click',e=>{rg.push({x:e.clientX,y:e.clientY,r:2});if(rg.length==1)requestAnimationFrame(an);
+if(!mu)try{ac=ac||new(window.AudioContext||webkitAudioContext)();ac.resume();const T=ac.currentTime,o=ac.createOscillator(),g=ac.createGain();
+o.type='triangle';o.frequency.setValueAtTime(150,T);o.frequency.exponentialRampToValueAtTime(90,T+.045);
+g.gain.setValueAtTime(.7,T);g.gain.exponentialRampToValueAtTime(.001,T+.045);o.connect(g);g.connect(ac.destination);o.start();o.stop(T+.045)}catch(x){}});
+(()=>{const c=$('fx'),x=c.getContext('2d');if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+let w,h,P=[];const rs=()=>{w=c.width=innerWidth;h=c.height=innerHeight};rs();addEventListener('resize',rs);
+for(let i=0;i<45;i++)P.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.4+.3,v:Math.random()*.25+.05,a:Math.random()*.4+.1,d:Math.random()<.25});
+(function f(){x.clearRect(0,0,w,h);P.map(p=>{p.y-=p.v;if(p.y<-5){p.y=h+5;p.x=Math.random()*w}
+x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fillStyle=p.d?`rgba(209,48,61,${p.a})`:`rgba(200,200,210,${p.a*.6})`;x.fill()});requestAnimationFrame(f)})()})()
+</script>
